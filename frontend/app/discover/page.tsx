@@ -142,7 +142,7 @@ export default function DiscoverPage() {
             id: doc.id,
             ...doc.data(),
             createdAt: doc.data().createdAt?.toDate() || new Date()
-          }))
+          })) as any[]
           
           const postComments = allComments.filter(comment => comment.postId === postId)
           

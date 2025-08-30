@@ -37,7 +37,7 @@ export default function Header() {
               />
             </div>
             <span className="text-3xl font-bold text-white group-hover:text-violet-300 transition-colors duration-300">
-              Sidechat
+              OpenSidechat
             </span>
             <span className="px-2 py-1 text-xs font-semibold bg-violet-600/20 border border-violet-500/30 text-violet-300 rounded-full">
               Beta
