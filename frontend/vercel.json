@@ -1,0 +1,12 @@
+{
+  "env": {
+    "NEXT_PUBLIC_API_URL": "https://pacific-ridge-91259-4cadd576c2ca.herokuapp.com",
+    "NEXT_PUBLIC_BACKEND_URL": "wss://pacific-ridge-91259-4cadd576c2ca.herokuapp.com",
+    "BACKEND_URL": "https://pacific-ridge-91259-4cadd576c2ca.herokuapp.com"
+  },
+  "functions": {
+    "app/api/*/route.js": {
+      "maxDuration": 30
+    }
+  }
+}
