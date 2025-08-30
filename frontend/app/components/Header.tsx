@@ -1,3 +1,5 @@
+//header component
+
 'use client'
 
 import Link from 'next/link'
@@ -17,6 +19,8 @@ export default function Header() {
     }
   }
 
+  //rendering the header
+
   return (
     <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-lg border-b border-gray-700 shadow-lg">
       <div className="container mx-auto px-6 py-4">
@@ -26,7 +30,7 @@ export default function Header() {
             <div className="relative">
               <Image 
                 src="/logo1.png" 
-                alt="Merg Logo" 
+                alt="Sidechat Logo" 
                 width={40} 
                 height={40} 
                 className="w-10 h-10 transition-transform duration-300 group-hover:scale-105"
@@ -40,7 +44,7 @@ export default function Header() {
             </span>
           </Link>
 
-          {/* Centered Navigation Links */}
+          {/* navigation links */}
           {user && (
             <nav className="hidden md:flex items-center space-x-8 absolute left-1/2 -translate-x-1/2">
               <Link
@@ -53,7 +57,7 @@ export default function Header() {
             </nav>
           )}
 
-          {/* Auth Section */}
+          {/* authentication */}
           <div className="flex items-center space-x-4">
             {user ? (
               <div className="flex items-center space-x-4">

@@ -1,3 +1,5 @@
+//signup page
+
 'use client'
 
 import React, { useState } from 'react';
@@ -19,11 +21,13 @@ export default function Signup() {
   const { signup } = useAuth();
   const router = useRouter();
 
+  // handle signup
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
 
-    // Check if email ends with valid UPenn domains
+    // again, checking if email ends in valid penn domain
     const validDomains = ['@upenn.edu', '@sas.upenn.edu', '@seas.upenn.edu', '@wharton.upenn.edu'];
     const isValidEmail = validDomains.some(domain => email.toLowerCase().endsWith(domain));
     
@@ -31,6 +35,8 @@ export default function Signup() {
       setError('Please use your UPenn email address (@upenn.edu, @sas.upenn.edu, @seas.upenn.edu, or @wharton.upenn.edu)');
       return;
     }
+
+    // checking if passwords match
 
     if (password !== confirmPassword) {
       setError('Passwords do not match');
@@ -54,6 +60,8 @@ export default function Signup() {
     }
   };
 
+  // helper function to get password strength
+
   const getPasswordStrength = (password: string) => {
     if (password.length < 6) return { strength: 'weak', color: 'bg-red-500', width: '33%' };
     if (password.length < 10) return { strength: 'medium', color: 'bg-yellow-500', width: '66%' };
@@ -61,6 +69,8 @@ export default function Signup() {
   };
 
   const passwordStrength = getPasswordStrength(password);
+
+  // render
 
   return (
     <div className="min-h-screen bg-slate-900 flex items-center justify-center px-4 font-inter">
@@ -80,7 +90,7 @@ export default function Signup() {
               Sidechat
             </h1>
           </div>
-          <p className="text-gray-300 text-xl font-semibold tracking-wide">Join UPenn Sidechat</p>
+          <p className="text-gray-300 text-xl font-semibold tracking-wide">Join Penn Sidechat</p>
           <p className="text-gray-500 text-base mt-2 font-medium">Connect anonymously with fellow students</p>
         </div>
 

@@ -1,3 +1,5 @@
+//this is the page used to create a new post
+
 'use client'
 
 import { useState } from 'react'
@@ -22,13 +24,13 @@ export default function CreatePostPage() {
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (file) {
-      // Validate file size (max 5MB)
+      // validate file size (max 5MB)
       if (file.size > 5 * 1024 * 1024) {
         setError('Image size must be less than 5MB')
         return
       }
 
-      // Validate file type
+      // validate file type
       if (!file.type.startsWith('image/')) {
         setError('Please select a valid image file')
         return
@@ -68,14 +70,14 @@ export default function CreatePostPage() {
       if (image) {
         const imageRef = ref(storage, `posts/${Date.now()}_${image.name}`)
         
-        // Use uploadBytesResumable for progress tracking
+        // use uploadBytesResumable for progress tracking
         const uploadTask = uploadBytesResumable(imageRef, image)
         
-        // Wait for upload to complete with progress tracking
+        // wait for upload to complete with progress tracking
         await new Promise((resolve, reject) => {
           uploadTask.on('state_changed',
             (snapshot) => {
-              // Track upload progress
+              // calculate progress
               const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
               setUploadProgress(Math.round(progress))
             },
@@ -84,7 +86,7 @@ export default function CreatePostPage() {
               reject(error)
             },
             async () => {
-              // Upload completed successfully
+              // if the upload is successful
               try {
                 imageUrl = await getDownloadURL(uploadTask.snapshot.ref)
                 resolve(imageUrl)
@@ -96,7 +98,7 @@ export default function CreatePostPage() {
         })
       }
 
-      // Create the post
+      // create the post
       await addDoc(collection(db, 'posts'), {
         content: content.trim(),
         imageUrl: imageUrl || null,
@@ -107,7 +109,7 @@ export default function CreatePostPage() {
         updatedAt: Timestamp.now(),
       })
 
-      // Reset form and navigate
+      // reset form and navigate
       setContent('')
       setImage(null)
       setImagePreview(null)
@@ -128,7 +130,7 @@ export default function CreatePostPage() {
 
   return (
     <div className="min-h-screen bg-black">
-      {/* Slim Sidebar */}
+      {/* the sidebar */}
       <div className="fixed left-0 top-0 h-full w-16 bg-gray-900 border-r border-gray-800 z-50 flex flex-col items-center py-4">
         <div className="flex flex-col gap-4">
           <button
@@ -160,24 +162,24 @@ export default function CreatePostPage() {
         </div>
       </div>
 
-      {/* Main Content */}
+      {/* main content */}
       <main className="ml-16 p-6">
         <FadeContent delay={200}>
           <div className="max-w-2xl mx-auto">
             <div className="mb-8">
               <h1 className="text-4xl font-bold text-white mb-2">Create Post</h1>
-              <p className="text-gray-400">Share your thoughts anonymously with UPenn students</p>
+              <p className="text-gray-400">Share your thoughts anonymously with other Penn students</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Error Display */}
+              {/* error message display */}
               {error && (
                 <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-4 text-red-300 text-sm">
                   {error}
                 </div>
               )}
 
-              {/* Upload Progress */}
+              {/* upload progress */}
               {loading && uploadProgress > 0 && uploadProgress < 100 && (
                 <div className="bg-gray-900 rounded-lg p-4 border border-gray-700">
                   <div className="flex items-center justify-between mb-2">
@@ -193,7 +195,7 @@ export default function CreatePostPage() {
                 </div>
               )}
 
-              {/* Text Content */}
+              {/* content */}
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
                   What's on your mind?
@@ -211,10 +213,10 @@ export default function CreatePostPage() {
                 </div>
               </div>
 
-              {/* Image Upload */}
+              {/* image upload */}
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Add an image (optional)
+                  Add an image
                 </label>
                 
                 {!imagePreview ? (
@@ -253,7 +255,7 @@ export default function CreatePostPage() {
                 )}
               </div>
 
-              {/* Submit Button */}
+              {/* this is the submit button */}
               <div className="flex gap-4">
                 <button
                   type="button"

@@ -1,3 +1,5 @@
+//this is the root layout component that provides context to the rest of the application
+
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'

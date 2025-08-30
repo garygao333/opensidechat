@@ -1,3 +1,5 @@
+//simple fade in and slide up animation component
+
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
@@ -18,6 +20,8 @@ export default function FadeContent({
   const [isVisible, setIsVisible] = useState(false)
   const elementRef = useRef<HTMLDivElement>(null)
 
+  //this is used to handle the intersecion observer for the fade content
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -36,6 +40,8 @@ export default function FadeContent({
 
     return () => observer.disconnect()
   }, [delay])
+
+  //this is used to render the fade content
 
   return (
     <div

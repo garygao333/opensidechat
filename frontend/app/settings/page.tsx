@@ -1,3 +1,5 @@
+//settings page
+
 'use client'
 
 import { useState } from 'react'
@@ -10,6 +12,8 @@ export default function SettingsPage() {
   const { user, logout } = useAuth()
   const router = useRouter()
   const [showConfirmLogout, setShowConfirmLogout] = useState(false)
+
+  // handle logout
 
   const handleLogout = async () => {
     try {
@@ -27,7 +31,7 @@ export default function SettingsPage() {
 
   return (
     <div className="min-h-screen bg-black">
-      {/* Slim Sidebar */}
+      {/* sidebar */}
       <div className="fixed left-0 top-0 h-full w-16 bg-gray-900 border-r border-gray-800 z-50 flex flex-col items-center py-4">
         <div className="flex flex-col gap-4">
           <button
@@ -59,17 +63,17 @@ export default function SettingsPage() {
         </div>
       </div>
 
-      {/* Main Content */}
+      {/* main content */}
       <main className="ml-16 p-6">
         <FadeContent delay={200}>
           <div className="max-w-2xl mx-auto">
             <div className="mb-8">
               <h1 className="text-4xl font-bold text-white mb-2">Settings</h1>
-              <p className="text-gray-400">Manage your Sidechat account</p>
+              <p className="text-gray-400">Manage your account</p>
             </div>
 
             <div className="space-y-6">
-              {/* Account Info */}
+              {/* account information */}
               <div className="bg-gray-900 rounded-xl p-6 border border-gray-700">
                 <h2 className="text-xl font-semibold text-white mb-4">Account Information</h2>
                 <div className="space-y-3">
@@ -88,7 +92,7 @@ export default function SettingsPage() {
                 </div>
               </div>
 
-              {/* App Info */}
+              {/* about the sidechat */}
               <div className="bg-gray-900 rounded-xl p-6 border border-gray-700">
                 <h2 className="text-xl font-semibold text-white mb-4">About Sidechat</h2>
                 <div className="space-y-3 text-gray-400">
@@ -105,7 +109,7 @@ export default function SettingsPage() {
                 </div>
               </div>
 
-              {/* Privacy & Safety */}
+              {/* privacy info */}
               <div className="bg-gray-900 rounded-xl p-6 border border-gray-700">
                 <h2 className="text-xl font-semibold text-white mb-4">Privacy & Safety</h2>
                 <div className="space-y-3 text-gray-400">
@@ -116,7 +120,7 @@ export default function SettingsPage() {
                 </div>
               </div>
 
-              {/* Logout */}
+              {/* logout */}
               <div className="bg-gray-900 rounded-xl p-6 border border-gray-700">
                 <h2 className="text-xl font-semibold text-white mb-4">Account Actions</h2>
                 

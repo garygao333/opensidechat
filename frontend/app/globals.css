@@ -1,9 +1,9 @@
-/* Tailwind base styles - Using @import instead of @tailwind for better IDE support */
+/* Tailwind base styles */
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-/* Base styles */
+/* base styles */
 html {
   scroll-behavior: smooth;
 }
@@ -14,7 +14,7 @@ body {
   min-height: 100vh;
 }
 
-/* Custom animations */
+/* animations */
 @keyframes bounce-custom {
   0%, 20%, 53%, 80%, 100% {
     transform: translate3d(0,0,0);
@@ -34,7 +34,6 @@ body {
   animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-/* Dark purple theme colors */
 :root {
   --color-purple-50: #faf5ff;
   --color-purple-100: #f3e8ff;
@@ -49,7 +48,7 @@ body {
   --color-dark-900: #111827;
 }
 
-/* Button styles */
+/* button styles */
 .btn-primary {
   background: rgba(147, 51, 234, 0.4);
   backdrop-filter: blur(12px);
@@ -89,7 +88,7 @@ body {
   box-shadow: 0 4px 15px rgba(168, 85, 247, 0.2);
 }
 
-/* Input styles */
+/* input styles */
 .input-primary {
   background-color: #1f2937;
   border: 2px solid #374151;
@@ -110,7 +109,7 @@ body {
   color: #6b7280;
 }
 
-/* Card styles */
+/* card or post styles */
 .card {
   background-color: #1f2937;
   border: 1px solid #374151;
@@ -126,7 +125,7 @@ body {
   border-color: #a855f7;
 }
 
-/* Gradient text */
+/* gradient text */
 .gradient-text {
   background: linear-gradient(135deg, #a855f7, #c084fc);
   -webkit-background-clip: text;
@@ -134,7 +133,7 @@ body {
   color: transparent;
 }
 
-/* Glass morphism effect */
+/* glass effects */
 .glass {
   background: rgba(31, 41, 55, 0.8);
   backdrop-filter: blur(20px);

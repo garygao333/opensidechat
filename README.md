@@ -1,23 +1,19 @@
-# UPenn Sidechat
+# OpenSidechat (Penn)
 
-An anonymous posting platform for University of Pennsylvania students, built with Next.js and Firebase.
+An anonymous posting platform for University of Pennsylvania students that's always free with no ads.
+
+## Summary of project
+
+OpenSideChat is a web application that allows users to create anonymous posts and comments. This is built in response to the Sidechat application becoming filled with advertisements. It is built using Next.js, TypeScript, and Firebase.
 
 ## Features
 
 - **Anonymous Posting**: Share thoughts and experiences without revealing your identity
-- **UPenn Email Verification**: Access restricted to verified UPenn email addresses
 - **Real-time Voting**: Upvote and downvote posts with instant updates
 - **Comment System**: Comment on posts with special tags (OP, #1, #2)
 - **Image Uploads**: Share photos along with text posts
 - **Post Sorting**: Posts ranked by popularity and recency
 - **Responsive Design**: Works seamlessly on desktop and mobile
-
-## Supported Email Domains
-
-- `@upenn.edu` - General UPenn students
-- `@sas.upenn.edu` - School of Arts & Sciences
-- `@seas.upenn.edu` - School of Engineering and Applied Science  
-- `@wharton.upenn.edu` - Wharton School
 
 ## Tech Stack
 
@@ -32,43 +28,24 @@ An anonymous posting platform for University of Pennsylvania students, built wit
 - **Firebase Firestore** - Real-time NoSQL database
 - **Firebase Storage** - Image and file storage
 
-## Project Structure
+## Time spent
 
-```
-frontend/
-├── app/
-│   ├── components/        # Reusable UI components
-│   ├── create/           # Create new post page
-│   ├── discover/         # Main posts feed
-│   ├── login/            # User login
-│   ├── settings/         # User settings
-│   └── signup/           # User registration
-├── contexts/             # React context providers
-├── lib/                  # Firebase configuration
-├── types/               # TypeScript type definitions
-└── public/              # Static assets
-```
+Total time spent is around 6 hours. Spent two hours developing initial logic and spent rest of time redesigining the application for better styles. 
 
-## Getting Started
+## Running the project 
 
-### Prerequisites
-- Node.js 18+ and npm
-- Firebase project with Authentication, Firestore, and Storage enabled
+The project is deployed via Heroku and can be accessed at .
 
-### Installation
+To run the project locally, use the following commands: 
 
-1. Clone the repository
-```bash
-git clone <repository-url>
-cd sidedoor-main/frontend
-```
+### Steps
 
-2. Install dependencies
+1. Install dependencies
 ```bash
 npm install
 ```
 
-3. Configure environment variables
+2. Configure environment variables
 Create a `.env` file in the frontend directory:
 ```env
 NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
@@ -79,85 +56,11 @@ NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
 NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
 ```
 
-4. Start the development server
+3. Start the development server
 ```bash
 npm run dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
+## Other information 
 
-## Firebase Setup
-
-### Firestore Collections
-- **posts**: Stores all user posts with content, votes, and metadata
-- **comments**: Stores comments linked to posts with commenter tags
-- **votes**: Tracks user voting patterns to prevent duplicates
-
-### Security Rules
-Ensure your Firestore rules allow authenticated users to read/write data:
-
-```javascript
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /posts/{document} {
-      allow read, write: if request.auth != null;
-    }
-    match /comments/{document} {
-      allow read, write: if request.auth != null;
-    }
-    match /votes/{document} {
-      allow read, write: if request.auth != null && 
-        resource.data.userId == request.auth.uid;
-    }
-  }
-}
-```
-
-## Features Overview
-
-### Anonymous Posting
-- Users can create text and image posts
-- All posts are anonymous - no usernames or profiles
-- Posts sorted by engagement and recency
-
-### Commenting System
-- **OP** tag for original poster
-- **#1** and **#2** tags for first and second unique commenters
-- Real-time comment loading and posting
-
-### Voting System
-- Upvote/downvote functionality with real-time updates
-- Vote persistence to prevent duplicate voting
-- Visual feedback for user votes
-
-### Authentication
-- Email-based authentication through Firebase
-- Restricted to UPenn email domains
-- Secure session management
-
-## Development
-
-### Available Scripts
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
-
-### Code Style
-- TypeScript for type safety
-- Tailwind CSS for styling
-- React functional components with hooks
-- Clean, documented code structure
-
-## Deployment
-
-The app can be deployed to Vercel, Netlify, or any platform supporting Next.js applications. Ensure all environment variables are configured in your deployment environment.
-
-## Contributing
-
-This is an educational project built for technical assessment purposes.
-
-## License
-
-This project is for educational and assessment purposes.
+This project is developed for the Penn Spark Red team technical application. 

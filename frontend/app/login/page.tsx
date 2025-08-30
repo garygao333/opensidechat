@@ -1,3 +1,5 @@
+//this is the login page
+
 'use client'
 
 import React, { useState } from 'react';
@@ -22,7 +24,7 @@ export default function Login() {
     setError('');
     setLoading(true);
 
-    // Check if email ends with valid UPenn domains
+    // checking and validating if email ends in penn domains
     const validDomains = ['@upenn.edu', '@sas.upenn.edu', '@seas.upenn.edu', '@wharton.upenn.edu'];
     const isValidEmail = validDomains.some(domain => email.toLowerCase().endsWith(domain));
     

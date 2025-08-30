@@ -1,3 +1,5 @@
+//this is the page that displays all of the posts
+
 'use client'
 
 import { useState, useEffect } from 'react'
@@ -26,7 +28,7 @@ export default function DiscoverPage() {
       return
     }
 
-    // Connect to real Firebase posts
+    // connecting to firebase posts
     const postsQuery = query(
       collection(db, 'posts'),
       orderBy('createdAt', 'desc')
@@ -44,7 +46,7 @@ export default function DiscoverPage() {
           downvotes: data.downvotes || 0,
           createdAt: data.createdAt?.toDate() || new Date(),
           updatedAt: data.updatedAt?.toDate() || new Date(),
-          comments: [] // Initialize empty, will load when comments are expanded
+          comments: [] // initialize as empty, will load when comments are expanded
         }
       })
 
@@ -61,7 +63,7 @@ export default function DiscoverPage() {
     if (!user) return
 
     try {
-      // Load user's votes from Firebase
+      // loading posts from firebase
       const votesQuery = query(collection(db, 'votes'))
       onSnapshot(votesQuery, (snapshot) => {
         const votes: { [key: string]: 'upvote' | 'downvote' } = {}
@@ -90,21 +92,21 @@ export default function DiscoverPage() {
       const voteRef = doc(db, 'votes', `${user.uid}-post-${postId}`)
 
       if (currentVote === voteType) {
-        // Remove vote
+        // remove vote
         await deleteDoc(voteRef)
         await updateDoc(postRef, {
           [voteType === 'upvote' ? 'upvotes' : 'downvotes']: increment(-1)
         })
       } else {
-        // Add or change vote
+        // add or change vote
         if (currentVote) {
-          // Change vote - remove old and add new
+          // change vote - remove old and add new
           await updateDoc(postRef, {
             [currentVote === 'upvote' ? 'upvotes' : 'downvotes']: increment(-1),
             [voteType === 'upvote' ? 'upvotes' : 'downvotes']: increment(1)
           })
         } else {
-          // New vote
+          // new vote
           await updateDoc(postRef, {
             [voteType === 'upvote' ? 'upvotes' : 'downvotes']: increment(1)
           })
@@ -127,7 +129,7 @@ export default function DiscoverPage() {
       [postId]: !prev[postId]
     }))
     
-    // Load comments when expanding for the first time
+    // loading comments
     if (!showComments[postId]) {
       try {
         const commentsQuery = query(
@@ -144,7 +146,7 @@ export default function DiscoverPage() {
           
           const postComments = allComments.filter(comment => comment.postId === postId)
           
-          // Update the specific post with its comments
+          // update the specific post with its comments
           setPosts(prevPosts => {
             return prevPosts.map(post => {
               if (post.id === postId) {
@@ -226,7 +228,7 @@ export default function DiscoverPage() {
     const aTime = a.createdAt.getTime()
     const bTime = b.createdAt.getTime()
     
-    // Combine score and recency (newer posts get bonus)
+    // combine score and recency for sorting the posts (newer posts get bonus)
     const aFinalScore = aScore + (aTime / 1000000000)
     const bFinalScore = bScore + (bTime / 1000000000)
     
@@ -243,7 +245,7 @@ export default function DiscoverPage() {
 
   return (
     <div className="min-h-screen bg-black">
-      {/* Slim Sidebar */}
+      {/* sidebar */}
       <div className="fixed left-0 top-0 h-full w-16 bg-gray-900 border-r border-gray-800 z-50 flex flex-col items-center py-4">
         <div className="flex flex-col gap-4">
           <button
@@ -275,12 +277,12 @@ export default function DiscoverPage() {
         </div>
       </div>
 
-      {/* Main Content */}
+      {/* main content */}
       <main className="ml-16 p-6">
         <FadeContent delay={200}>
           <div className="mb-8">
-            <h1 className="text-4xl font-bold text-white mb-2">Sidechat Posts</h1>
-            <p className="text-gray-400">Anonymous posts from UPenn students</p>
+            <h1 className="text-4xl font-bold text-white mb-2">Posts</h1>
+            <p className="text-gray-400">Anonymous posts and thoughts from Penn students</p>
           </div>
 
           {loading ? (
@@ -309,7 +311,7 @@ export default function DiscoverPage() {
                       className="bg-gray-900 rounded-xl p-4 hover:bg-gray-800 transition-all duration-300 border border-gray-700 hover:border-gray-600"
                       style={{ height: `${getPostHeight(post)}px` }}
                     >
-                      {/* Post Content */}
+                      {/* post content */}
                       <div className="mb-4">
                         <p className="text-white text-sm leading-relaxed">
                           {post.content}
@@ -325,7 +327,7 @@ export default function DiscoverPage() {
                         )}
                       </div>
 
-                      {/* Vote and Comment Actions */}
+                      {/* vote and comments */}
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
                           <button
@@ -381,7 +383,7 @@ export default function DiscoverPage() {
                         </div>
                       </div>
 
-                      {/* Comments Section */}
+                      {/* comments */}
                       {showComments[post.id] && (
                         <div className="mt-4 border-t border-gray-700 pt-4 space-y-2">
                           {post.comments.map((comment) => (
@@ -404,7 +406,7 @@ export default function DiscoverPage() {
                             </div>
                           ))}
                           
-                          {/* Add Comment */}
+                          {/* adding comment */}
                           <div className="flex gap-2 mt-2">
                             <input
                               type="text"

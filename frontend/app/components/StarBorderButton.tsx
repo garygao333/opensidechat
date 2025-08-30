@@ -1,3 +1,5 @@
+//this is a button component that has the cool shimmer effect when hovered
+
 'use client'
 
 import { useState } from 'react'
@@ -50,12 +52,12 @@ export default function StarBorderButton({
       `}
       {...props}
     >
-      {/* Button content */}
+      {/* buttont */}
       <span className="relative z-10 flex items-center justify-center gap-2">
         {children}
       </span>
 
-      {/* Shimmer effect */}
+      {/* a shimmer effect */}
       <div 
         className={`
           absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-purple-300/20 to-transparent

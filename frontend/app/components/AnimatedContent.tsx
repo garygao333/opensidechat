@@ -14,6 +14,8 @@ interface AnimatedContentProps {
   className?: string
 }
 
+//this is used to define the animated content component
+
 export default function AnimatedContent({ 
   children, 
   animation = 'slideUp',
@@ -23,6 +25,8 @@ export default function AnimatedContent({
 }: AnimatedContentProps) {
   const [isVisible, setIsVisible] = useState(false)
   const elementRef = useRef<HTMLDivElement>(null)
+
+  //this is used to handle the intersection observer for the animated content
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -42,6 +46,8 @@ export default function AnimatedContent({
 
     return () => observer.disconnect()
   }, [delay])
+
+  //this is used to get the initial transform for the animated content
 
   const getInitialTransform = () => {
     switch (animation) {
@@ -64,12 +70,16 @@ export default function AnimatedContent({
     }
   }
 
+  //this is used to get the transition class for the animated content
+
   const getTransitionClass = () => {
     if (animation === 'bounce') {
       return 'transition-all ease-bounce'
     }
     return 'transition-all ease-out'
   }
+
+  //this is used to render the animated content
 
   return (
     <div
