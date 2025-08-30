@@ -94,15 +94,15 @@ export default function SettingsPage() {
 
               {/* about the sidechat */}
               <div className="bg-gray-900 rounded-xl p-6 border border-gray-700">
-                <h2 className="text-xl font-semibold text-white mb-4">About Sidechat</h2>
+                <h2 className="text-xl font-semibold text-white mb-4">About OpenSideChat</h2>
                 <div className="space-y-3 text-gray-400">
-                  <p>Anonymous posting platform for UPenn students</p>
+                  <p>Open-source anonymous posting platform for Penn students</p>
                   <p>• Share thoughts and experiences anonymously</p>
-                  <p>• Comment and vote on posts from fellow students</p>
-                  <p>• Connect with the UPenn community</p>
+                  <p>• Comment and vote on posts from other fellow students</p>
+                  <p>• Forever free with no ads</p>
                   <div className="pt-3 border-t border-gray-700">
                     <p className="text-sm text-gray-500">
-                      Only verified UPenn email addresses can access this platform<br/>
+                      Only verified Penn email addresses can access this platform<br/>
                       (@upenn.edu, @sas.upenn.edu, @seas.upenn.edu, @wharton.upenn.edu)
                     </p>
                   </div>
@@ -113,10 +113,9 @@ export default function SettingsPage() {
               <div className="bg-gray-900 rounded-xl p-6 border border-gray-700">
                 <h2 className="text-xl font-semibold text-white mb-4">Privacy & Safety</h2>
                 <div className="space-y-3 text-gray-400">
-                  <p>• All posts are anonymous - your identity is not revealed</p>
-                  <p>• Only you can see your own posting history</p>
-                  <p>• Be respectful and follow community guidelines</p>
-                  <p>• Report inappropriate content by contacting moderators</p>
+                  <p>• All posts are anonymous</p>
+                  <p>• Be respectful of others and don't post anything inappropriate</p>
+                  <p>• Developed for Penn Spark Red team technical application</p>
                 </div>
               </div>
 

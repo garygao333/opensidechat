@@ -87,11 +87,11 @@ export default function Signup() {
               />
             </div>
             <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 tracking-tight leading-tight">
-              Sidechat
+              OpenSideChat
             </h1>
           </div>
-          <p className="text-gray-300 text-xl font-semibold tracking-wide">Join Penn Sidechat</p>
-          <p className="text-gray-500 text-base mt-2 font-medium">Connect anonymously with fellow students</p>
+          <p className="text-gray-300 text-xl font-semibold tracking-wide">Join Penn OpenSideChat</p>
+          <p className="text-gray-500 text-base mt-2 font-medium">Connect anonymously with other Penn students</p>
         </div>
 
         <form className="space-y-8" onSubmit={handleSubmit}>
@@ -119,7 +119,7 @@ export default function Signup() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   className="w-full px-4 py-3 bg-slate-800/50 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 text-white placeholder-gray-400 transition-all duration-200 font-medium"
-                  placeholder="your.email@upenn.edu (or @sas, @seas, @wharton)"
+                  placeholder="your.email@ sas, seas, or wharton .upenn.edu"
                 />
               </div>
 
